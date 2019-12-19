@@ -16,7 +16,9 @@ function App() {
       }}>
         <Header />
         <Router sx={{ 
-          padding: [4, 5]
+          padding: [4, 5],
+          margin: '0 auto',
+          maxWidth: '1200px'
         }}>
           <Index path="/" />
           <Highscores path="highscores" />
