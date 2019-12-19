@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @jsx jsx */
+import { jsx, ThemeProvider } from 'theme-ui'
+import theme from './theme'
+import { Router } from '@reach/router';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Index from './pages/index';
+import Highscores from './pages/highscores';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div sx={{
+        backgroundColor: 'background',
+        minHeight: '100vh',
+      }}>
+        <Header />
+        <Router sx={{ 
+          padding: [4, 5]
+        }}>
+          <Index path="/" />
+          <Highscores path="highscores" />
+        </Router>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 
