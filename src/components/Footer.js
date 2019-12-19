@@ -6,7 +6,6 @@ const Footer = () => (
     textAlign: 'center',
     fontFamily: 'body',
     fontSize: 0,
-    borderTop: '2px solid #000',
     padding: 2
   }}>
     <p>
