@@ -32,7 +32,10 @@ const StartGame = ({ setGameStarted, setJokes }) => {
       {
         !fetching
           ? <Button onClick={fetchJokes}>Start</Button>
-          : <div sx={{ '&>div': { left: '20%' }}}>
+          : <div sx={{ 
+              marginBottom: 5,
+              '&>div': { left: '20%' }
+            }}>
               <PacmanLoader color={theme.colors.primary} />
             </div>
       }
