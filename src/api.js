@@ -5,5 +5,5 @@ export const getTenRandomJokes = () => {
   return fetch(url)
     .then(res => res.status === 200 ? res.json() : new Error())
     .then(data => data)
-    .catch(err => ({ error: 'Something went wrong!'}));
+    .catch(err => ({ error: 'Something went wrong, please try again!'}));
 }
