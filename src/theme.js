@@ -10,9 +10,21 @@ export default {
   colors: {
     text: '#000',
     background: '#eee',
+    backgroundSecondary: '#fff',
     primary: 'hotpink',
     secondary: 'lime',
+    correct: '#0f0',
+    error: '#f00',
   },
-  breakpoints: ['450px']
+  breakpoints: ['500px'],
+  styles: {
+    h2: {
+      fontSize: 2,
+      fontFamily: 'heading',
+      textTransform: 'uppercase',
+      marginTop: 0,
+      marginBottom: 3
+    }
+  }
 
 }
