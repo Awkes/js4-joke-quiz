@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/runtime": "^7.7.7",
     "@emotion/core": "^10.0.22",
     "@mdx-js/react": "^1.5.2",
     "@reach/router": "^1.2.1",
@@ -13,6 +14,7 @@
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0",
     "react-spinners": "^0.6.1",
+    "react-time-format": "0.0.5",
     "theme-ui": "^0.2.52",
     "typeface-acme": "0.0.72",
     "typeface-bowlby-one-sc": "0.0.72",
