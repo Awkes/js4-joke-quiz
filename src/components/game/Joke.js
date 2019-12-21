@@ -1,12 +1,19 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Button';
 import Input from '../Input';
 import stripString from '../../utils/stripString';
 
-const Joke = ({ joke, activeJoke, totalJokes, incrementActiveJoke, incrementCorrectAnswers }) => {
+const Joke = ({
+  joke,
+  activeJoke,
+  totalJokes,
+  incrementActiveJoke,
+  incrementCorrectAnswers,
+  setGameOver
+}) => {
   const { setup, punchline } = joke;
   const [answer, setAnswer] = useState(null);
   const [correct, setCorrect] = useState(false);
@@ -27,6 +34,8 @@ const Joke = ({ joke, activeJoke, totalJokes, incrementActiveJoke, incrementCorr
     setCorrect(false);
   }
 
+  useEffect(() => { if (activeJoke === totalJokes && answer) setGameOver(true) });
+
   return (
     <div sx={{ textAlign: 'center', width: '100%' }}>
       <Styled.h2 sx={{ marginBottom: 0 }}>Joke</Styled.h2>
@@ -38,35 +47,35 @@ const Joke = ({ joke, activeJoke, totalJokes, incrementActiveJoke, incrementCorr
         {setup}
       </p>
       {
-        !answer 
+        !answer
           ?
-            <form onSubmit={handleJokeAnswer}>
-              <div sx={{ width: ['100%', '75%'], margin: '0 auto' }}>
-                <Input name="answer" autoFocus={true} />
-              </div>
-              <div sx={{ marginTop: 3, marginX: 'auto', width: 'fit-content' }}>
-                <Button>Guess Punchline</Button>
-              </div>
-            </form>
-          :
-            <div sx={{
-              fontFamily: 'body',
-              fontSize: 2,
-            }}>
-              <p sx={{ fontWeight: 'bold' }}>
-                {punchline}
-              </p>
-              {
-                correct
-                  ? <p sx={{ color: 'correct' }}>Correct answer!</p>
-                  : <p sx={{ color: 'error' }}>Wrong answer</p>
-              }
-              <div sx={{ width: 'fit-content', margin: '0 auto' }}>
-                <Button onClick={nextJoke} autoFocus={true}>
-                  { activeJoke !== totalJokes ? 'Next Joke' : 'Finish!' }
-                </Button>
-              </div>
+          <form onSubmit={handleJokeAnswer}>
+            <div sx={{ width: ['100%', '75%'], margin: '0 auto' }}>
+              <Input name="answer" autoFocus={true} />
             </div>
+            <div sx={{ marginTop: 3, marginX: 'auto', width: 'fit-content' }}>
+              <Button>Guess Punchline</Button>
+            </div>
+          </form>
+          :
+          <div sx={{
+            fontFamily: 'body',
+            fontSize: 2,
+          }}>
+            <p sx={{ fontWeight: 'bold' }}>
+              {punchline}
+            </p>
+            {
+              correct
+                ? <p sx={{ color: 'correct' }}>Correct answer!</p>
+                : <p sx={{ color: 'error' }}>Wrong answer</p>
+            }
+            <div sx={{ width: 'fit-content', margin: '0 auto' }}>
+              <Button onClick={nextJoke} autoFocus={true}>
+                {activeJoke !== totalJokes ? 'Next Joke' : 'Finish!'}
+              </Button>
+            </div>
+          </div>
       }
     </div>
   );
@@ -79,5 +88,6 @@ Joke.propTypes = {
   activeJoke: PropTypes.number.isRequired,
   totalJokes: PropTypes.number.isRequired,
   incrementActiveJoke: PropTypes.func.isRequired,
-  incrementCorrectAnswers: PropTypes.func.isRequired
+  incrementCorrectAnswers: PropTypes.func.isRequired,
+  setGameOver: PropTypes.func.isRequired
 }
