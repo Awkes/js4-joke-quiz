@@ -1,5 +1,11 @@
 import React from 'react';
+import Box from '../components/Box';
+import Highscores from '../components/highscores/Highscores';
 
-const Highscores = () => <main>Highscores</main>;
-
-export default Highscores;
+export default () => (
+  <main>
+    <Box>
+      <Highscores /> 
+    </Box>
+  </main>
+);
