@@ -23,7 +23,7 @@ const Timer = ({ run }) => {
     <time>
       <Time 
         value={time}
-        format="HH:mm:ss"
+        format="mm:ss"
         sx={{
           fontFamily: 'body',
           fontSize: 3,
