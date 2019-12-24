@@ -11,10 +11,10 @@ export const getTenRandomJokes = () => {
 
 // Highscores
 export const getHighscores = () => (
-  JSON.parse(localStorage.getItem('highscores') || "[]").sort((a, b) => a.score > b.score)
+  JSON.parse(localStorage.getItem('highscores') || "[]").sort((a, b) => a.score < b.score ? 1 : -1)
 );
 
-export const setHighScore = (name, score, time) => {
+export const setHighscore = (name, score, time) => {
   const highscores = getHighscores().slice(0, 9);
   highscores.push({ name, score, time });
   localStorage.setItem('highscores', JSON.stringify(highscores));
