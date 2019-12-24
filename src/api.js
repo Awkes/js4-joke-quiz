@@ -21,5 +21,5 @@ export const setHighscore = (name, score, time) => {
 }
 
 export const checkIfHighscore = score => (
-  getHighscores().filter(hs => score > hs.score) ? true : false
+  getHighscores().filter(hs => score > hs.score).length > 0 ? true : false
 );
