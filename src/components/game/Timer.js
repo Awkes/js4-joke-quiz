@@ -6,10 +6,10 @@ import Time from 'react-time-format';
 
 const Timer = ({ run, setTotalTime }) => {
   const [startTime] = useState(new Date());
-  const [time, setTime] = useState(-3600000);
+  const [time, setTime] = useState(new Date(0));
 
   const updateTime = useCallback(() => {
-    const elapsedTime = new Date(new Date().getTime() - startTime.getTime() -3600000);
+    const elapsedTime = new Date(new Date().getTime() - startTime.getTime());
     setTime(elapsedTime);
   }, [startTime]);
 
