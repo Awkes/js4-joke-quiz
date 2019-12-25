@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Time from 'react-time-format';
 
-const Timer = ({ run }) => {
+const Timer = ({ run, setTotalTime }) => {
   const [startTime] = useState(new Date());
   const [time, setTime] = useState(-3600000);
 
@@ -15,9 +15,12 @@ const Timer = ({ run }) => {
 
   useEffect(() => {
     const timer = setInterval(updateTime, 500);
-    if (!run) clearInterval(timer);
+    if (!run) { 
+      clearInterval(timer);
+      setTotalTime(time);
+    }
     return () => clearInterval(timer);
-  }, [run, startTime, updateTime]);
+  }, [run, setTotalTime, startTime, time, updateTime]);
   
   return (
     <time>
@@ -36,7 +39,8 @@ const Timer = ({ run }) => {
 export default Timer;
 
 Timer.propTypes = {
-  run: PropTypes.bool
+  run: PropTypes.bool,
+  setTotalTime: PropTypes.func.isRequired
 }
 
 Timer.defaultProps = {

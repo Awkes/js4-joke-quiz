@@ -10,6 +10,7 @@ const PlayGame = ({ jokes }) => {
   const [activeJoke, setActiveJoke] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [totalTime, setTotalTime] = useState(0);
   
   const incrementActiveJoke = () => setActiveJoke(activeJoke+1);
   const incrementCorrectAnswers = () => setCorrectAnswers(correctAnswers+1);
@@ -22,7 +23,7 @@ const PlayGame = ({ jokes }) => {
         marginBottom: -3,
         textAlign: 'right'
       }}>
-        <Timer run={!gameOver} />
+        <Timer run={!gameOver} setTotalTime={setTotalTime} />
       </div>
       {
         activeJoke < jokes.length
@@ -34,7 +35,7 @@ const PlayGame = ({ jokes }) => {
               incrementCorrectAnswers={incrementCorrectAnswers}
               setGameOver={setGameOver}
             />
-          : <Finish correctAnswers={correctAnswers} />
+          : <Finish correctAnswers={correctAnswers} time={totalTime} />
       }
     </div> 
   );
