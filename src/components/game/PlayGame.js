@@ -6,10 +6,11 @@ import Joke from './Joke';
 import Finish from './Finish';
 import Timer from './Timer';
 
-const PlayGame = ({ jokes }) => {
+const PlayGame = ({ jokes, resetGame }) => {
   const [activeJoke, setActiveJoke] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [totalTime, setTotalTime] = useState(0);
   
   const incrementActiveJoke = () => setActiveJoke(activeJoke+1);
   const incrementCorrectAnswers = () => setCorrectAnswers(correctAnswers+1);
@@ -22,7 +23,7 @@ const PlayGame = ({ jokes }) => {
         marginBottom: -3,
         textAlign: 'right'
       }}>
-        <Timer run={!gameOver} />
+        <Timer run={!gameOver} setTotalTime={setTotalTime} />
       </div>
       {
         activeJoke < jokes.length
@@ -34,7 +35,7 @@ const PlayGame = ({ jokes }) => {
               incrementCorrectAnswers={incrementCorrectAnswers}
               setGameOver={setGameOver}
             />
-          : <Finish correctAnswers={correctAnswers} />
+          : <Finish correctAnswers={correctAnswers} time={totalTime} resetGame={resetGame} />
       }
     </div> 
   );
@@ -43,5 +44,6 @@ const PlayGame = ({ jokes }) => {
 export default PlayGame;
 
 PlayGame.propTypes = {
-  jokes: PropTypes.arrayOf(PropTypes.object)
+  jokes: PropTypes.arrayOf(PropTypes.object),
+  resetGame: PropTypes.func.isRequired
 }

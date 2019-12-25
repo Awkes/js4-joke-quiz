@@ -50,12 +50,15 @@ const Joke = ({
         !answer
           ?
           <form onSubmit={handleJokeAnswer}>
-            <div sx={{ width: ['100%', '75%'], margin: '0 auto' }}>
-              <Input name="answer" autoFocus={true} />
-            </div>
-            <div sx={{ marginTop: 3, marginX: 'auto', width: 'fit-content' }}>
-              <Button>Guess Punchline</Button>
-            </div>
+            <Input 
+              name="answer" 
+              autoFocus={true} 
+              sx={{ width: ['100%', '75%'], margin: '0 auto', display: 'block' }}
+            />
+            <Button 
+              children="Guess Punchline"
+              sx={{ marginTop: 3, marginX: 'auto', width: 'fit-content' }}
+            />
           </form>
           :
           <div sx={{

@@ -31,7 +31,7 @@ const StartGame = ({ setGameStarted, setJokes }) => {
       <Styled.h2>Play a game</Styled.h2>
       {
         !fetching
-          ? <Button onClick={fetchJokes}>Start</Button>
+          ? <Button onClick={fetchJokes} autoFocus={true}>Start</Button>
           : <div sx={{ 
               marginBottom: 5,
               '&>div': { left: '20%' }
