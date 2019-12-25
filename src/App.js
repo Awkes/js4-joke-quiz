@@ -4,8 +4,9 @@ import theme from './theme'
 import { Router } from '@reach/router';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Index from './pages/index';
-import Highscores from './pages/highscores';
+import Box from './components/Box';
+import Game from './components/game/Game';
+import Highscores from './components/highscores/Highscores';
 
 function App() {
   return (
@@ -15,14 +16,18 @@ function App() {
         minHeight: '100vh',
       }}>
         <Header />
-        <Router sx={{ 
+        <main sx={{ 
           padding: [4, 5],
           margin: '0 auto',
           maxWidth: '1200px'
         }}>
-          <Index path="/" />
-          <Highscores path="highscores" />
-        </Router>
+          <Box>
+            <Router>
+              <Game path="/" />
+              <Highscores path="highscores" />
+            </Router>
+          </Box>
+        </main>
         <Footer />
       </div>
     </ThemeProvider>
