@@ -7,7 +7,8 @@ import PlayGame from './PlayGame';
 const Game = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [jokes, setJokes]  = useState();
-
+  const resetGame = () => setGameStarted(false);
+  
   return (
     <div sx={{
       paddingX: 3,
@@ -20,7 +21,7 @@ const Game = () => {
       {
         !gameStarted
           ? <StartGame setGameStarted={setGameStarted} setJokes={setJokes} />
-          : <PlayGame jokes={jokes} />
+          : <PlayGame jokes={jokes} resetGame={resetGame} />
       }
     </div>
   );

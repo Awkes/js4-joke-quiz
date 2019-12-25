@@ -20,6 +20,12 @@ export const setHighscore = (name, score, time) => {
   localStorage.setItem('highscores', JSON.stringify(highscores));
 }
 
-export const checkIfHighscore = score => (
-  getHighscores().filter(hs => score > hs.score).length > 0 ? true : false
-);
+export const checkIfHighscore = score => {
+  if (score > 0) {
+    const highscores = getHighscores();
+    return highscores.length > 9
+      ? highscores.filter(hs => score > hs.score).length > 0 ? true : false
+      : true;
+  }
+  return false;
+}
