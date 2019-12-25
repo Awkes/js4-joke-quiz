@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @jsx jsx */
+import { jsx, ThemeProvider } from 'theme-ui'
+import theme from './theme'
+import { Router } from '@reach/router';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Box from './components/Box';
+import Game from './components/game/Game';
+import Highscores from './components/highscores/Highscores';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div sx={{
+        backgroundColor: 'background',
+        minHeight: '100vh',
+      }}>
+        <Header />
+        <main sx={{ 
+          padding: [4, 5],
+          margin: '0 auto',
+          maxWidth: '1200px'
+        }}>
+          <Box>
+            <Router>
+              <Game path="/" />
+              <Highscores path="highscores" />
+            </Router>
+          </Box>
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 
