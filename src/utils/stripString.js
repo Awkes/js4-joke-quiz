@@ -6,7 +6,7 @@ const stripString = string => {
       .trim(),
     chr => chr.match(/^[a-z0-9 ]+$/)
   ).join('');
-  return newString;
+  return newString.trim().replace(/\s\s+/g, ' ');
 }
 
 export default stripString;
