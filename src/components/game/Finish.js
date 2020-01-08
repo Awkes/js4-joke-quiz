@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Time from 'react-time-format'
 import Highscore from './Highscore';
 import Button from '../Button';
-import { checkIfHighscore } from '../../api';
+import { checkIfHighscore } from '../../api/highscores';
 
 const Finish = ({ correctAnswers, time, resetGame }) => {
   const score = Math.round((correctAnswers * 100000000) / time.getTime());

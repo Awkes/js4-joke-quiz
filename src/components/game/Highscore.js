@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { navigate } from '@reach/router'
 import Input from '../Input';
 import Button from '../Button';
-import { setHighscore } from '../../api';
+import { setHighscore } from '../../api/highscores';
 
 const Highscore = ({ score, time }) => {
   const handleRegistration = e => {
