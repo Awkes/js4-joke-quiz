@@ -4,7 +4,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { PacmanLoader } from 'react-spinners';
 import Button from '../Button';
-import { getTenRandomJokes } from '../../api';
+import { getTenRandomJokes } from '../../api/jokes';
 
 const StartGame = ({ setGameStarted, setJokes }) => {
   const [fetching, setFetching] = useState(false);

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled } from 'theme-ui';
 import HighscoreList from './HighscoreList';
-import { getHighscores } from '../../api';
+import { getHighscores } from '../../api/highscores';
 
 const Highscores = () => (
   <div sx={{
