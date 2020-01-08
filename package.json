@@ -28,7 +28,8 @@
       "src/**/*.js",
       "!src/index.js",
       "!src/serviceWorker.js",
-      "!src/theme.js"
+      "!src/theme.js",
+      "!src/api/jokes.js"
     ]
   },
   "devDependencies": {
