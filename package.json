@@ -25,7 +25,10 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "src/{!(api/jokes),}.js"
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/serviceWorker.js",
+      "!src/theme.js"
     ]
   },
   "devDependencies": {
